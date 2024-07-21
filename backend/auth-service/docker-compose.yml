@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  auth_db:
+    image: postgres
+    env_file:
+      - .env
+    volumes:
+      - ./data/postgres:/var/lib/postgres/data
+    
+  auth_service:
+    build: .
+    command: python manage.py runserver 0.0.0.0:${AUTH_PORT}
+    volumes:
+      - .:/code
+    env_file:
+      - .env
+    ports:
+      - ${USER_PORT}:${AUTH_PORT}
+    depends_on:
+      - auth_db

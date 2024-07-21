@@ -1,0 +1,3 @@
+/backend/auth-service/data
+*.env
+django_postgres.txt
