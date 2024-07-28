@@ -7,6 +7,8 @@ services:
       - .env
     volumes:
       - ./data/postgres:/var/lib/postgres/data
+    networks:
+      - ts_network
     
   auth_service:
     build: .
@@ -19,3 +21,9 @@ services:
       - ${USER_PORT}:${AUTH_PORT}
     depends_on:
       - auth_db
+    networks:
+      - ts_network
+  
+networks:
+  ts_network:
+    driver: bridge
