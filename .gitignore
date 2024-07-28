@@ -1,4 +1,4 @@
 /backend/auth-service/data
 *.env
 django_postgres.txt
-__pycache__/**
+**/__pycache__/**
